@@ -1,4 +1,4 @@
-import server from "./server.mjs";
+import server from "./api/server.mjs";
 const PORT = process.env.PORT || 5000;
 
 server.listen(PORT, () => {
