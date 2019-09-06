@@ -3,8 +3,12 @@ import db from "../data/helpers/userDb.js";
 
 const router = express.Router();
 
-router.get("/", async (req, res) => {
-	try {
+router.get("/", (req, res) => {
+    return db.get()
+        .then(users => res.status(200).json(users))
+        .catch(err => res.status(500).json({error: "Error retrieving users."}))
+/*	
+try {
 		const users = await db.get();
 		res.status(200).json(users);
 	} catch (error) {
@@ -12,6 +16,8 @@ router.get("/", async (req, res) => {
 			error: "Error retrieving users."
 		})
 	}
+*/
+
 });
 
 router.get("/:id", async (req, res) => {
